@@ -2,7 +2,7 @@
 This project aims to design and simulate a short range range, this RADAR operates around 79 GHz and the bandwith should responds to the desired range resolution.
 Project steps:
 
-1. Modeling the FMCW radar tranmsitted signal 
+1. Design of FMCW radar tranmsitted signal based on technical specifications
 2. Modeling the received signal  and adding noise and multipath effects
 3. Modeling the total received signal inclduing interfrences 
 4. Extract IF signal ( output Mixer)
