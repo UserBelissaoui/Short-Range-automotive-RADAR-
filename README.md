@@ -16,3 +16,6 @@ Project steps:
 7. Clustring
 8. Tracking
 9. Traget recognition
+
+
+All this project scripts will be written in MATLAB language at the first time, then I will create another project of the same radar using C language.
