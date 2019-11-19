@@ -1,0 +1,37 @@
+
+
+M=5; % Number of targets
+mindist=0;
+maxdist=Rmax; % max distance in m
+
+minV=0;
+maxV=60;%% max speed in km/h
+
+Vi=((maxV-minV)*rand(1,M)+minV)/3.6; %% i-th target speed in m/s 
+Ri=(maxdist-mindist)*rand(1,M)+mindist; %% i-th target range in m
+
+Bi=rand(1,M); %% canal de propagation!!!
+
+tdi=Ri/(2*c);
+fdi=fc*Vi/c; %% à vérifier pour systeme RADAR en tenant consideration l'angle!!!
+rs=zeros(M,length(t));
+
+
+for i=1:M
+    
+    sprintf("Target: %d Vit %d   Dist  %d    tdi: %.12f   fdi: %f\n",i,Vi(i),Ri(i),tdi(i),fdi(i))
+    
+    rs(i,:)=mychirp(t-tdi(i),cst1+fdi(i),cst2,Bi(i));
+%     figure(i+1)
+%     plot(t,rs(i,:));
+%     title(sprintf('Target %d',i));
+%     xlabel('Time(s)');
+%     ylabel('Amplitude'); 
+end
+Rs_Without_I=sum(rs,1);
+ 
+figure(2)
+plot(t,Rs_Without_I);
+title('Received Signal: Without interference component ');
+xlabel('Time(s)');
+ylabel('Amplitude');
