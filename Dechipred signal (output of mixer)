@@ -7,6 +7,11 @@ mixed=Tx.*R; %
 m=mixed;
 % [y3, D3]=lowpass(mixed,fb_max,fs) ; %
 % m=y3;
+figure(5)
+plot(t,m);
+xlabel('Time(s)');
+ylabel('Amplitude');
+title('Mixer output');
 y = fft(m);
 n = length(y);          % number of samples
 f = (0:n-1)*(fs/n);     % frequency range
