@@ -1,1 +1,11 @@
-
+[cst1 cst2 s_s fb_max, fs, dt]=getparams(BW,fc,Rmax);
+t=(0:1/fs:dt); %time base
+A=1;
+Tx = mychirp(t,cst1,cst2,A);  
+% subplot(2,2,1)
+figure(1)
+plot(t,Tx,'k');
+title('Transmitted signal (Chirp)');
+xlabel('Time(s)');
+ylabel('Amplitude');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
