@@ -2,7 +2,7 @@
 This project aims to design and simulate a short range range, this RADAR operates around 79 GHz and the bandwith should responds to the desired range resolution.
 Project steps:
 
-1. Design of FMCW radar tranmsitted signal based on technical specifications
+1. Design of FMCW radar (chirp) tranmsitted signal based on technical specifications
 2. Modeling the received signal  and adding noise and multipath effects
 3. Modeling the total received signal inclduing interfrences 
 4. Extract IF signal ( output Mixer)
@@ -18,4 +18,4 @@ Project steps:
 9. Traget recognition
 
 
-All this project scripts will be written in MATLAB language at the first time, then I will create another project of the same radar using C language.
+All this project scripts will be written in MATLAB language at the first time, then I will create another project of the same radar using C/C++ language.
