@@ -1,0 +1,52 @@
+ close all
+clear all
+clc
+
+ParameterInit;
+ N=randperm(M); %% Number of interferers N must be inferior of number of targets
+ N_I=N(1); % take the first value of N 
+
+mindist=10;
+maxdist=Rmax;
+
+minV=0;
+maxV=0;
+ri_I=zeros(N_I,length(t));
+
+for j=1:N_I
+Vi_I=((maxV-minV)*rand(1,N_I)+minV)/3.6; %% en m/s !!!
+Ri_I=(maxdist-mindist)*rand(1,N_I)+mindist; 
+
+Bi_I=rand(1,N_I)+1; %% canal de propagation!!! 
+
+% Get random Range from 1 to 3
+idx=randperm(3);% index
+fci_I=fc_I(idx(1));
+tdi_I=Ri_I/(2*c);
+fdi_I=fci_I*Vi_I/c; %% à vérifier pour systeme RADAR en tenant consideration l'angle!!!
+BWi_I=BW_I(idx(1));
+
+disp(strcat('Interferer type ', interferer{idx(1)}))
+
+[cst1i_I cst2i_I s_s fb_max fs, dt]=getparams(BWi_I,fci_I,Rmax);
+
+    ri_I(j,:)=mychirp(t-tdi_I(j),cst1i_I+fdi_I(j),cst2i_I,Bi_I(j));
+
+end
+
+R_I=sum(ri_I,1);
+ 
+figure(3)
+plot(t,R_I);
+title('Received Interferer Component');
+xlabel('Time(s)');
+ylabel('Amplitude');
+R_N_N=Rs_Without_I+R_I
+R=awgn(R_N_N,10,'measured')  %% add AWGN noise to the received signal
+hold on
+plot(t,R_N_N,'r');
+plot(t,R,'b');
+legend('Received signal without noise','Received signal with noise')
+title('Received Signal with & without noise');
+% xlabel('Time(s)');
+% ylabel('Amplitude');
