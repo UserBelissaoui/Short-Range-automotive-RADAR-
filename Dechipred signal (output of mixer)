@@ -1,1 +1,17 @@
 
+close all
+clear all
+clc
+ParameterInit;
+mixed=Tx.*R; %
+m=mixed;
+% [y3, D3]=lowpass(mixed,fb_max,fs) ; %
+% m=y3;
+y = fft(m);
+n = length(y);          % number of samples
+f = (0:n-1)*(fs/n);     % frequency range
+% power of the DFT
+power = abs(y).^2/n;    % power of the DFT
+plot(f,power)
+xlabel('Frequency')
+ylabel('Power')
