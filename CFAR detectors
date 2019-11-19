@@ -1,0 +1,8 @@
+
+n = 2^nextpow2(length(t)*5); % zero pad to 5 times the length
+Y = fft(m,n);
+f = fs*(1:(n))/n;
+plot(f,Y);
+xlabel('Frequency');
+ylabel('FFT Gain');
+title('Spectrum of mixer output');
