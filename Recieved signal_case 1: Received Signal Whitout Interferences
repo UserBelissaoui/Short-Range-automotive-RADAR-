@@ -1,4 +1,10 @@
 
+%%I design here the fmcw received signal without interferences 
+close all
+clear all
+clc
+ParameterInit;
+
 
 M=5; % Number of targets
 mindist=0;
