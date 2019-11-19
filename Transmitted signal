@@ -1,3 +1,7 @@
+close all
+clear all
+clc
+ParameterInit;
 [cst1 cst2 s_s fb_max, fs, dt]=getparams(BW,fc,Rmax);
 t=(0:1/fs:dt); %time base
 A=1;
